@@ -1,0 +1,15 @@
+## room_rent_list表
+create table room_rent_list(
+room_id int(11) unsigned not null auto_increment,
+user_id int(10) not null,
+title varchar(255) not null,
+discrip mediumtext,
+price double(16,2),
+user_phone_num int(20),
+room_browse_count int(8) DEFAULT 0,
+location varchar(255) DEFAULT NULL,
+destination varchar(255) DEFAULT NULL,
+cover_img varchar(255) DEFAULT NULL,
+post_time datetime DEFAULT NULL,
+primary key (room_id)
+)ENGINE=InnoDB DEFAULT CHARSET=UTF8;

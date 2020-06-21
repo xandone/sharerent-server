@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xandone.sharerent.mapper.RoomMapper">
+    <resultMap id="BaseResultMap" type="com.xandone.sharerent.pojo.RoomBean">
+        <result column="room_id" property="roomId" jdbcType="INTEGER"/>
+        <result column="user_id" property="userId" jdbcType="INTEGER"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="discrip" property="discrip" jdbcType="VARCHAR"/>
+        <result column="price" property="price" jdbcType="DOUBLE"/>
+        <result column="user_phone_num" property="userPhoneNum" jdbcType="INTEGER"/>
+        <result column="room_browse_count" property="roomBrowseCount" jdbcType="INTEGER"/>
+        <result column="location" property="location" jdbcType="VARCHAR"/>
+        <result column="destination" property="destination" jdbcType="VARCHAR"/>
+        <result column="cover_img" property="coverImg" jdbcType="VARCHAR"/>
+        <result column="post_time" property="postTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <insert id="addRoom" parameterType="com.xandone.sharerent.pojo.RoomBean">
+        insert into room_rent_list
+        (room_id,
+        user_id,
+        title,
+        discrip,
+        price,
+        user_phone_num,
+        room_browse_count,
+        location,
+        destination,
+        cover_img,
+        post_time
+        ) values
+        (#{roomId},
+        #{userId},
+        #{title},
+        #{discrip},
+        #{price},
+        #{userPhoneNum},
+        #{roomBrowseCount},
+        #{location},
+        #{destination},
+        #{coverImg},
+        #{postTime}
+        )
+    </insert>
+
+
+    <!-- asc 按升序排列 (不用写，默认使用这个) desc 按降序排列 -->
+    <select id="getRoomList" resultMap="BaseResultMap">
+        select * from room_rent_list order by
+        room_id desc
+    </select>
+</mapper>

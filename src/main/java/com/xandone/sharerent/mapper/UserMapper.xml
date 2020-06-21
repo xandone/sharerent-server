@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xandone.sharerent.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.xandone.sharerent.pojo.UserBean">
+        <result column="user_id" property="userId" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <insert id="addUser" parameterType="com.xandone.sharerent.pojo.UserBean">
+        insert into room_rent_list
+        (user_id
+        ) values
+        (#{userId}
+        )
+    </insert>
+
+</mapper>
