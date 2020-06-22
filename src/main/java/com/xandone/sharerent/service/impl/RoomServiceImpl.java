@@ -6,10 +6,13 @@ import com.xandone.sharerent.common.BaseListResult;
 import com.xandone.sharerent.mapper.RoomMapper;
 import com.xandone.sharerent.pojo.RoomBean;
 import com.xandone.sharerent.service.RoomService;
+import com.xandone.sharerent.utils.SimpleUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author ：xandone
@@ -36,5 +39,28 @@ public class RoomServiceImpl implements RoomService {
         base.setData(list);
         base.setTotal(total);
         return base;
+    }
+
+    @Override
+    public RoomBean addRoom(Map<String, Object> map) throws Exception {
+        RoomBean roomBean = new RoomBean();
+
+        roomBean.setUserId((Integer) map.get("userId"));
+        roomBean.setTitle((String) map.get("title"));
+        roomBean.setDiscrip((String) map.get("descrip"));
+        roomBean.setPrice(880);
+        roomBean.setPostTime(new Date());
+        roomBean.setDestination("经开");
+        roomBean.setLocation("光谷");
+        roomBean.setUserPhoneNum(159);
+        roomBean.setRoomBrowseCount(0);
+
+        String imgJson= (String) map.get("images");
+        String[] imgs = SimpleUtils.json2Pojo(imgJson, String[].class);
+        roomBean.setCoverImg(imgs[0]);
+
+        roomMapper.addRoom(roomBean);
+
+        return roomBean;
     }
 }
