@@ -48,16 +48,17 @@ public class RoomServiceImpl implements RoomService {
         roomBean.setUserId((Integer) map.get("userId"));
         roomBean.setTitle((String) map.get("title"));
         roomBean.setDiscrip((String) map.get("descrip"));
-        roomBean.setPrice(880);
+        roomBean.setPrice(Double.parseDouble((String) map.get("price")));
         roomBean.setPostTime(new Date());
-        roomBean.setDestination("经开");
-        roomBean.setLocation("光谷");
-        roomBean.setUserPhoneNum(159);
+        roomBean.setDestination((String) map.get("destination"));
+        roomBean.setLocation((String) map.get("location"));
+        roomBean.setUserPhoneNum("1590000001");
         roomBean.setRoomBrowseCount(0);
 
-        String imgJson= (String) map.get("images");
+        String imgJson = (String) map.get("images");
         String[] imgs = SimpleUtils.json2Pojo(imgJson, String[].class);
         roomBean.setCoverImg(imgs[0]);
+        roomBean.setImgArr(imgJson);
 
         roomMapper.addRoom(roomBean);
 

@@ -15,11 +15,12 @@ public class RoomBean {
     private String title;
     private String discrip;
     private double price;
-    private int userPhoneNum;
+    private String userPhoneNum;
     private int roomBrowseCount;
     private String location;
     private String destination;
     private String coverImg;
+    private String imgArr;
     private Date postTime;
 
     public int getRoomId() {
@@ -62,11 +63,11 @@ public class RoomBean {
         this.price = price;
     }
 
-    public int getUserPhoneNum() {
+    public String getUserPhoneNum() {
         return userPhoneNum;
     }
 
-    public void setUserPhoneNum(int userPhoneNum) {
+    public void setUserPhoneNum(String userPhoneNum) {
         this.userPhoneNum = userPhoneNum;
     }
 
@@ -100,6 +101,14 @@ public class RoomBean {
 
     public void setCoverImg(String coverImg) {
         this.coverImg = coverImg;
+    }
+
+    public String getImgArr() {
+        return imgArr;
+    }
+
+    public void setImgArr(String imgArr) {
+        this.imgArr = imgArr;
     }
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
