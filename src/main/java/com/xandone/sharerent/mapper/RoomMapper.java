@@ -1,6 +1,7 @@
 package com.xandone.sharerent.mapper;
 
 import com.xandone.sharerent.pojo.RoomBean;
+import com.xandone.sharerent.pojo.RoomCollectBean;
 
 import java.util.List;
 
@@ -13,4 +14,6 @@ public interface RoomMapper {
     void addRoom(RoomBean roomBean);
 
     List<RoomBean> getRoomList();
+
+    void collectRoom(RoomCollectBean roomCollectBean);
 }

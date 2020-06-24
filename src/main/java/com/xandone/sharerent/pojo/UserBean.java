@@ -15,6 +15,8 @@ public class UserBean {
     private String wxNum;
     private String phoneNum;
     private int banned;
+    private int pubCount;
+    private int collectCount;
     private Date registerTime;
     private Date lastLoginTime;
 
@@ -56,6 +58,22 @@ public class UserBean {
 
     public void setBanned(int banned) {
         this.banned = banned;
+    }
+
+    public int getPubCount() {
+        return pubCount;
+    }
+
+    public void setPubCount(int pubCount) {
+        this.pubCount = pubCount;
+    }
+
+    public int getCollectCount() {
+        return collectCount;
+    }
+
+    public void setCollectCount(int collectCount) {
+        this.collectCount = collectCount;
     }
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")

@@ -9,4 +9,8 @@ import com.xandone.sharerent.pojo.UserBean;
  */
 public interface UserMapper {
     void addUser(UserBean userBean);
+
+    UserBean getUserById(String userOpenid);
+
+    void updateUser(UserBean userBean);
 }

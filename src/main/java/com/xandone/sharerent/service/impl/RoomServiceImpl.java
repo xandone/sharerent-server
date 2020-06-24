@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.xandone.sharerent.common.BaseListResult;
 import com.xandone.sharerent.mapper.RoomMapper;
 import com.xandone.sharerent.pojo.RoomBean;
+import com.xandone.sharerent.pojo.RoomCollectBean;
 import com.xandone.sharerent.service.RoomService;
 import com.xandone.sharerent.utils.SimpleUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,5 +64,11 @@ public class RoomServiceImpl implements RoomService {
         roomMapper.addRoom(roomBean);
 
         return roomBean;
+    }
+
+    @Override
+    public void collectRoom(int roomId, String userOpenid) throws Exception {
+        RoomCollectBean roomCollectBean = new RoomCollectBean(roomId, userOpenid, new Date());
+        roomMapper.collectRoom(roomCollectBean);
     }
 }

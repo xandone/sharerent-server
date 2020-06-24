@@ -23,7 +23,18 @@ nickname varchar(30) not null,
 wx_num varchar(30) not null,
 phone_num varchar(20),
 banned tinyint(1) DEFAULT 0,
+pub_count int(10) DEFAULT 0,
+collect_count int(10) DEFAULT 0,
 register_time datetime DEFAULT NULL,
 last_login_time datetime DEFAULT NULL,
 primary key(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+
+## room收藏表
+create table user_collect_rooms(
+id int(11) unsigned not null auto_increment,
+room_id int(11) not null,
+user_openid varchar(100) not null,
+collect_time datetime DEFAULT NULL,
+primary key (id)
+)ENGINE=InnoDB DEFAULT CHARSET=UTF8;

@@ -3,12 +3,14 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xandone.sharerent.mapper.UserMapper">
-    <resultMap id="BaseResultMap" type="com.xandone.sharerent.pojo.UserBean">
+    <resultMap id="userBean" type="com.xandone.sharerent.pojo.UserBean">
         <result column="user_openid" property="userOpenid" jdbcType="INTEGER"/>
         <result column="nickname" property="nickname" jdbcType="VARCHAR"/>
         <result column="wx_num" property="wxNum" jdbcType="VARCHAR"/>
         <result column="phone_num" property="phoneNum" jdbcType="VARCHAR"/>
         <result column="banned" property="banned" jdbcType="INTEGER"/>
+        <result column="pub_count" property="pubCount" jdbcType="INTEGER"/>
+        <result column="collect_count" property="collectCount" jdbcType="INTEGER"/>
         <result column="register_time" property="registerTime" jdbcType="TIMESTAMP"/>
         <result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP"/>
     </resultMap>
@@ -20,6 +22,8 @@
         wx_num,
         phone_num,
         banned,
+        pub_count,
+        collect_count,
         register_time,
         last_login_time
         ) values
@@ -28,9 +32,27 @@
         #{wxNum},
         #{phoneNum},
         #{banned},
+        #{pubCount},
+        #{collectCount},
         #{registerTime},
         #{lastLoginTime}
         )
     </insert>
+
+    <select id="getUserById" parameterType="java.lang.String"
+            resultMap="userBean">
+        select * from user where user_openid = #{userOpenid}
+    </select>
+
+    <update id="updateUser" parameterType="com.xandone.sharerent.pojo.UserBean">
+        update user
+        <set>
+            <if test="nickname != null">nickname = #{nickname,jdbcType=VARCHAR},</if>
+            <if test="pubCount != null">pub_count = #{pubCount,jdbcType=INTEGER},</if>
+            <if test="collectCount != null">collect_count = #{collectCount,jdbcType=INTEGER},</if>
+            <if test="banned != null">banned = #{banned,jdbcType=INTEGER},</if>
+        </set>
+        where user_openid = #{userOpenid}
+    </update>
 
 </mapper>

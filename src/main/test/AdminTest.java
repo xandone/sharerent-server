@@ -21,8 +21,6 @@ public class AdminTest {
         roomBean.setPostTime(new Date());
         mapper.addRoom(roomBean);
 
-
-
     }
 
     @Test
@@ -37,15 +35,27 @@ public class AdminTest {
     public void addUser() {
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
         UserMapper mapper = context.getBean(UserMapper.class);
-        UserBean userBean = new UserBean();
-        userBean.setUserOpenid("1222");
-        userBean.setBanned(0);
-        userBean.setNickname("狗蛋");
-        userBean.setWxNum("11111123336");
-        userBean.setPhoneNum("1599999999");
-        userBean.setLastLoginTime(new Date());
-        userBean.setRegisterTime(new Date());
-        mapper.addUser(userBean);
+//        UserBean userBean = new UserBean();
+//        userBean.setUserOpenid("1222");
+//        userBean.setBanned(0);
+//        userBean.setNickname("狗蛋");
+//        userBean.setWxNum("11111123336");
+//        userBean.setPhoneNum("1599999999");
+//        userBean.setLastLoginTime(new Date());
+//        userBean.setRegisterTime(new Date());
+//        mapper.addUser(userBean);
 
+        UserBean userBean = mapper.getUserById("1222");
+        userBean.setPubCount(1);
+        mapper.updateUser(userBean);
+
+    }
+
+    @Test
+    public void collectRoom() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
+        RoomMapper mapper = context.getBean(RoomMapper.class);
+        RoomCollectBean collectBean = new RoomCollectBean(1, "251", new Date());
+        mapper.collectRoom(collectBean);
     }
 }

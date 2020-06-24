@@ -48,10 +48,21 @@
         )
     </insert>
 
-
     <!-- asc 按升序排列 (不用写，默认使用这个) desc 按降序排列 -->
     <select id="getRoomList" resultMap="BaseResultMap">
         select * from room_rent_list order by
         room_id desc
     </select>
+
+    <insert id="collectRoom" parameterType="com.xandone.sharerent.pojo.RoomCollectBean">
+        insert into user_collect_rooms(
+        room_id,
+        user_openid,
+        collect_time)
+        values(
+        #{roomId},
+        #{userOpenid},
+        #{collectTime})
+    </insert>
+
 </mapper>
