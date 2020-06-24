@@ -4,14 +4,32 @@
         "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xandone.sharerent.mapper.UserMapper">
     <resultMap id="BaseResultMap" type="com.xandone.sharerent.pojo.UserBean">
-        <result column="user_id" property="userId" jdbcType="INTEGER"/>
+        <result column="user_openid" property="userOpenid" jdbcType="INTEGER"/>
+        <result column="nickname" property="nickname" jdbcType="VARCHAR"/>
+        <result column="wx_num" property="wxNum" jdbcType="VARCHAR"/>
+        <result column="phone_num" property="phoneNum" jdbcType="VARCHAR"/>
+        <result column="banned" property="banned" jdbcType="INTEGER"/>
+        <result column="register_time" property="registerTime" jdbcType="TIMESTAMP"/>
+        <result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <insert id="addUser" parameterType="com.xandone.sharerent.pojo.UserBean">
-        insert into room_rent_list
-        (user_id
+        insert into user
+        (user_openid,
+        nickname,
+        wx_num,
+        phone_num,
+        banned,
+        register_time,
+        last_login_time
         ) values
-        (#{userId}
+        (#{userOpenid},
+        #{nickname},
+        #{wxNum},
+        #{phoneNum},
+        #{banned},
+        #{registerTime},
+        #{lastLoginTime}
         )
     </insert>
 

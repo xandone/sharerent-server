@@ -38,7 +38,13 @@ public class AdminTest {
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
         UserMapper mapper = context.getBean(UserMapper.class);
         UserBean userBean = new UserBean();
-        userBean.setUserId(1);
+        userBean.setUserOpenid("1222");
+        userBean.setBanned(0);
+        userBean.setNickname("狗蛋");
+        userBean.setWxNum("11111123336");
+        userBean.setPhoneNum("1599999999");
+        userBean.setLastLoginTime(new Date());
+        userBean.setRegisterTime(new Date());
         mapper.addUser(userBean);
 
     }

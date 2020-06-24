@@ -14,3 +14,16 @@ img_arr varchar(2550) DEFAULT NULL,
 post_time datetime DEFAULT NULL,
 primary key (room_id)
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+
+## User表
+create table user(
+id int(11) unsigned not null auto_increment,
+user_openid varchar(100) not null,
+nickname varchar(30) not null,
+wx_num varchar(30) not null,
+phone_num varchar(20),
+banned tinyint(1) DEFAULT 0,
+register_time datetime DEFAULT NULL,
+last_login_time datetime DEFAULT NULL,
+primary key(id)
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
