@@ -5,7 +5,6 @@ import com.xandone.sharerent.common.BaseResult;
 import com.xandone.sharerent.common.ReturnCode;
 import com.xandone.sharerent.pojo.RoomBean;
 import com.xandone.sharerent.service.RoomService;
-import org.apache.http.util.TextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -54,6 +53,52 @@ public class RoomController {
         BaseListResult baseResult = new BaseListResult();
         try {
             BaseListResult result = roomService.getRoomList(page, row);
+            if (result != null) {
+                result.setCode(ReturnCode.SUCCESS);
+                result.setMsg(ReturnCode.MES_REQUEST_SUCCESS);
+                return result;
+            }
+            baseResult.setCode(ReturnCode.ERROR_CODE);
+        } catch (Exception e) {
+            e.printStackTrace();
+            baseResult.setCode(ReturnCode.ERROR_CODE);
+            baseResult.setMsg(ReturnCode.MES_SERVER_ERROR);
+        }
+        return baseResult;
+
+    }
+
+    @RequestMapping(value = "/myRoomlist")
+    @ResponseBody
+    public BaseListResult getMyRoomList(@RequestParam(value = "page") Integer page,
+                                        @RequestParam(value = "row") Integer row,
+                                        @RequestParam(value = "openId") String openId) {
+        BaseListResult baseResult = new BaseListResult();
+        try {
+            BaseListResult result = roomService.getMyRoomList(page, row, openId);
+            if (result != null) {
+                result.setCode(ReturnCode.SUCCESS);
+                result.setMsg(ReturnCode.MES_REQUEST_SUCCESS);
+                return result;
+            }
+            baseResult.setCode(ReturnCode.ERROR_CODE);
+        } catch (Exception e) {
+            e.printStackTrace();
+            baseResult.setCode(ReturnCode.ERROR_CODE);
+            baseResult.setMsg(ReturnCode.MES_SERVER_ERROR);
+        }
+        return baseResult;
+
+    }
+
+    @RequestMapping(value = "/myCollectlist")
+    @ResponseBody
+    public BaseListResult getMyCollectList(@RequestParam(value = "page") Integer page,
+                                           @RequestParam(value = "row") Integer row,
+                                           @RequestParam(value = "openId") String openId) {
+        BaseListResult baseResult = new BaseListResult();
+        try {
+            BaseListResult result = roomService.getMyCollectList(page, row, openId);
             if (result != null) {
                 result.setCode(ReturnCode.SUCCESS);
                 result.setMsg(ReturnCode.MES_REQUEST_SUCCESS);

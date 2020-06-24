@@ -14,6 +14,9 @@ public class RoomCollectBean {
     private String userOpenid;
     private Date collectTime;
 
+    public RoomCollectBean() {
+    }
+
     public RoomCollectBean(int roomId, String userOpenid, Date collectTime) {
         this.roomId = roomId;
         this.userOpenid = userOpenid;

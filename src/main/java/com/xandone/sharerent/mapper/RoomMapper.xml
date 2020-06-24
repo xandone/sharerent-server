@@ -5,7 +5,7 @@
 <mapper namespace="com.xandone.sharerent.mapper.RoomMapper">
     <resultMap id="BaseResultMap" type="com.xandone.sharerent.pojo.RoomBean">
         <result column="room_id" property="roomId" jdbcType="INTEGER"/>
-        <result column="user_id" property="userId" jdbcType="INTEGER"/>
+        <result column="user_openid" property="userOpenid" jdbcType="INTEGER"/>
         <result column="title" property="title" jdbcType="VARCHAR"/>
         <result column="discrip" property="discrip" jdbcType="VARCHAR"/>
         <result column="price" property="price" jdbcType="DOUBLE"/>
@@ -18,10 +18,17 @@
         <result column="post_time" property="postTime" jdbcType="TIMESTAMP"/>
     </resultMap>
 
+    <resultMap id="collects" type="com.xandone.sharerent.pojo.RoomCollectBean">
+        <result column="room_id" property="roomId" jdbcType="INTEGER"/>
+        <result column="user_openid" property="userOpenid" jdbcType="VARCHAR"/>
+        <result column="collect_time" property="collectTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+
     <insert id="addRoom" parameterType="com.xandone.sharerent.pojo.RoomBean">
         insert into room_rent_list
         (room_id,
-        user_id,
+        user_openid,
         title,
         discrip,
         price,
@@ -34,7 +41,7 @@
         post_time
         ) values
         (#{roomId},
-        #{userId},
+        #{userOpenid},
         #{title},
         #{discrip},
         #{price},
@@ -64,5 +71,28 @@
         #{userOpenid},
         #{collectTime})
     </insert>
+
+    <select id="getMyRoomList" resultMap="BaseResultMap">
+        select * from room_rent_list where user_openid=#{userOpenid} order by
+        room_id desc
+    </select>
+
+    <select id="getMyCollectList" resultMap="collects">
+        select * from user_collect_rooms where user_openid=#{userOpenid} order by
+        id desc
+    </select>
+
+    <select id="getRoomById" resultMap="BaseResultMap">
+        select * from
+        room_rent_list where room_id = #{roomId}
+    </select>
+
+    <select id="getMyRoomCount" resultType="java.lang.Integer">
+        select count(*) from room_rent_list where user_openid=#{userOpenid}
+    </select>
+
+    <select id="getMyCollectCount" resultType="java.lang.Integer">
+        select count(*) from user_collect_rooms where user_openid=#{userOpenid}
+    </select>
 
 </mapper>

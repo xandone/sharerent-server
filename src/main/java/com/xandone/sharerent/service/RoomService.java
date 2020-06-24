@@ -12,4 +12,8 @@ public interface RoomService {
     RoomBean addRoom(Map<String, Object> map) throws Exception;
 
     void collectRoom(int roomId, String userOpenid) throws Exception;
+
+    BaseListResult getMyRoomList(Integer page, Integer row, String userOpenid);
+
+    BaseListResult getMyCollectList(Integer page, Integer row, String userOpenid);
 }

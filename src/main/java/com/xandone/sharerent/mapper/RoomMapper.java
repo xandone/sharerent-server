@@ -16,4 +16,14 @@ public interface RoomMapper {
     List<RoomBean> getRoomList();
 
     void collectRoom(RoomCollectBean roomCollectBean);
+
+    List<RoomBean> getMyRoomList(String userOpenid);
+
+    List<RoomCollectBean> getMyCollectList(String userOpenid);
+
+    RoomBean getRoomById(int roomId);
+
+    int getMyRoomCount(String userOpenid);
+
+    int getMyCollectCount(String userOpenid);
 }

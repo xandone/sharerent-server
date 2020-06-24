@@ -14,7 +14,7 @@ public class AdminTest {
         RoomMapper mapper = context.getBean(RoomMapper.class);
 
         RoomBean roomBean = new RoomBean();
-        roomBean.setUserId(250);
+        roomBean.setUserOpenid("1223");
         roomBean.setTitle("FIFA探讨世界杯扩军：中国可能要进世界杯？");
         roomBean.setDiscrip("2018年4月，南美足协主席多明格斯公开发言，希望国际足联考虑在2022年实现世界杯扩军，因凡蒂诺顺水推舟，"
                 + "开始寻求卡塔尔的合作。但卡塔尔不愿意与周边国家共同举办世界杯，而它自身的场馆数量，又无法满足48支球队比赛的需求，这一计划才最终作罢。");
@@ -36,7 +36,7 @@ public class AdminTest {
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
         UserMapper mapper = context.getBean(UserMapper.class);
 //        UserBean userBean = new UserBean();
-//        userBean.setUserOpenid("1222");
+//        userBean.setUserOpenid("1223");
 //        userBean.setBanned(0);
 //        userBean.setNickname("狗蛋");
 //        userBean.setWxNum("11111123336");
@@ -45,9 +45,10 @@ public class AdminTest {
 //        userBean.setRegisterTime(new Date());
 //        mapper.addUser(userBean);
 
-        UserBean userBean = mapper.getUserById("1222");
-        userBean.setPubCount(1);
-        mapper.updateUser(userBean);
+//        UserBean userBean = mapper.getUserById("1222");
+//        userBean.setPubCount(1);
+//        mapper.updateUser(userBean);
+        mapper.getUserById("1223");
 
     }
 
@@ -55,7 +56,7 @@ public class AdminTest {
     public void collectRoom() {
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
         RoomMapper mapper = context.getBean(RoomMapper.class);
-        RoomCollectBean collectBean = new RoomCollectBean(1, "251", new Date());
+        RoomCollectBean collectBean = new RoomCollectBean(1, "1223", new Date());
         mapper.collectRoom(collectBean);
     }
 }

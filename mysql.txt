@@ -1,7 +1,7 @@
 ## room_rent_list表
 create table room_rent_list(
 room_id int(11) unsigned not null auto_increment,
-user_id int(10) not null,
+user_openid varchar(100) not null,
 title varchar(255) not null,
 discrip mediumtext,
 price double(16,2),

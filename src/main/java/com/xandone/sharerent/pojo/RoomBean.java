@@ -11,7 +11,7 @@ import java.util.Date;
  */
 public class RoomBean {
     private int roomId;
-    private int userId;
+    private String userOpenid;
     private String title;
     private String discrip;
     private double price;
@@ -31,12 +31,12 @@ public class RoomBean {
         this.roomId = roomId;
     }
 
-    public int getUserId() {
-        return userId;
+    public String getUserOpenid() {
+        return userOpenid;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUserOpenid(String userOpenid) {
+        this.userOpenid = userOpenid;
     }
 
     public String getTitle() {
