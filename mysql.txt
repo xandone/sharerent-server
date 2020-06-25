@@ -20,11 +20,11 @@ create table user(
 id int(11) unsigned not null auto_increment,
 user_openid varchar(100) not null,
 nickname varchar(30) not null,
-wx_num varchar(30) not null,
 phone_num varchar(20),
 banned tinyint(1) DEFAULT 0,
 pub_count int(10) DEFAULT 0,
 collect_count int(10) DEFAULT 0,
+user_icon varchar(255),
 register_time datetime DEFAULT NULL,
 last_login_time datetime DEFAULT NULL,
 primary key(id)

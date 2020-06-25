@@ -12,13 +12,13 @@ import java.util.Date;
 public class UserBean {
     private String userOpenid;
     private String nickname;
-    private String wxNum;
     private String phoneNum;
     private int banned;
     private int pubCount;
     private int collectCount;
     private Date registerTime;
     private Date lastLoginTime;
+    private String userIcon;
 
     public String getUserOpenid() {
         return userOpenid;
@@ -34,14 +34,6 @@ public class UserBean {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
-    }
-
-    public String getWxNum() {
-        return wxNum;
-    }
-
-    public void setWxNum(String wxNum) {
-        this.wxNum = wxNum;
     }
 
     public String getPhoneNum() {
@@ -94,4 +86,11 @@ public class UserBean {
         this.lastLoginTime = lastLoginTime;
     }
 
+    public String getUserIcon() {
+        return userIcon;
+    }
+
+    public void setUserIcon(String userIcon) {
+        this.userIcon = userIcon;
+    }
 }

@@ -6,11 +6,11 @@
     <resultMap id="userBean" type="com.xandone.sharerent.pojo.UserBean">
         <result column="user_openid" property="userOpenid" jdbcType="INTEGER"/>
         <result column="nickname" property="nickname" jdbcType="VARCHAR"/>
-        <result column="wx_num" property="wxNum" jdbcType="VARCHAR"/>
         <result column="phone_num" property="phoneNum" jdbcType="VARCHAR"/>
         <result column="banned" property="banned" jdbcType="INTEGER"/>
         <result column="pub_count" property="pubCount" jdbcType="INTEGER"/>
         <result column="collect_count" property="collectCount" jdbcType="INTEGER"/>
+        <result column="user_icon" property="userIcon" jdbcType="VARCHAR"/>
         <result column="register_time" property="registerTime" jdbcType="TIMESTAMP"/>
         <result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP"/>
     </resultMap>
@@ -19,21 +19,21 @@
         insert into user
         (user_openid,
         nickname,
-        wx_num,
         phone_num,
         banned,
         pub_count,
         collect_count,
+        user_icon,
         register_time,
         last_login_time
         ) values
         (#{userOpenid},
         #{nickname},
-        #{wxNum},
         #{phoneNum},
         #{banned},
         #{pubCount},
         #{collectCount},
+        #{userIcon},
         #{registerTime},
         #{lastLoginTime}
         )
