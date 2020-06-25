@@ -27,11 +27,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserBean getUserById(String userOpenid) {
-        UserBean userBean = userMapper.getUserById("1223");
+        UserBean userBean = userMapper.getUserById(userOpenid);
+        if (userBean == null) {
+            return null;
+        }
         int myRoomCount = roomMapper.getMyRoomCount(userOpenid);
         int myCollectCount = roomMapper.getMyCollectCount(userOpenid);
         userBean.setPubCount(myRoomCount);
         userBean.setCollectCount(myCollectCount);
-        return  userBean;
+        return userBean;
     }
 }

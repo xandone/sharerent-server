@@ -48,7 +48,7 @@ public class AdminTest {
 //        UserBean userBean = mapper.getUserById("1222");
 //        userBean.setPubCount(1);
 //        mapper.updateUser(userBean);
-        mapper.getUserById("1223");
+        UserBean userBean = mapper.getUserById("1222");
 
     }
 

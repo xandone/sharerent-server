@@ -27,7 +27,9 @@ public class UserController {
         try {
             userBean = userService.getUserById(openId);
             List<UserBean> list = new ArrayList<>();
-            list.add(userBean);
+            if (userBean != null) {
+                list.add(userBean);
+            }
             baseResult.setData(list);
             baseResult.setCode(ReturnCode.SUCCESS);
         } catch (
